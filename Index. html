@@ -69,4 +69,116 @@ button, .upload {
   width: 100%;
   padding: 14px;
   margin-top: 15px;
-  border
+  border: none;
+  border-radius: 10px;
+  background: #8b5cf6;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer;
+}
+
+input {
+  display: none;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #888;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>MyEditor ✨</h1>
+  <p>Your creative video studio</p>
+</header>
+
+<main class="container">
+
+  <section class="card">
+    <h2>Video Preview 🎬</h2>
+
+    <div class="preview" id="preview">
+      <p>Your video will appear here</p>
+    </div>
+
+    <label class="upload" for="videoInput">
+      📁 Choose a Video
+    </label>
+
+    <input type="file" id="videoInput" accept="video/*">
+  </section>
+
+  <section class="card">
+    <h2>AI Background Remover 🤖</h2>
+    <p>Remove the background from your videos.</p>
+    <button id="removeBg">Remove Background</button>
+    <p id="status"></p>
+  </section>
+
+  <section class="card">
+    <h2>Export Video 📥</h2>
+    <p>Export your video when ready.</p>
+    <button id="exportBtn">Export Video</button>
+  </section>
+
+</main>
+
+<footer>
+  Made with ❤️ using MyEditor
+</footer>
+
+<script>
+const input = document.getElementById("videoInput");
+const preview = document.getElementById("preview");
+const status = document.getElementById("status");
+
+let videoURL = null;
+
+input.addEventListener("change", function () {
+  const file = this.files[0];
+
+  if (!file) return;
+
+  if (videoURL) URL.revokeObjectURL(videoURL);
+
+  videoURL = URL.createObjectURL(file);
+  preview.innerHTML = "";
+
+  const video = document.createElement("video");
+  video.src = videoURL;
+  video.controls = true;
+  video.playsInline = true;
+
+  preview.appendChild(video);
+  status.textContent = "Video loaded successfully!";
+});
+
+document.getElementById("removeBg").onclick = function () {
+  status.textContent =
+    "AI background removal is not connected yet.";
+};
+
+document.getElementById("exportBtn").onclick = function () {
+  if (!videoURL) {
+    alert("Please choose a video first.");
+    return;
+  }
+
+  const a = document.createElement("a");
+  a.href = videoURL;
+  a.download = input.files[0].name;
+  a.click();
+};
+</script>
+
+</body>
+</html>
