@@ -1,12 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MyEditor</title>
-</head>
-<body>
-  <h1>Welcome to MyEditor</h1>
-  <p>My online video editor.</p>
-</body>
-</html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MyEditor</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #101014;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  padding: 20px;
+  background: #1b1b23;
+  border-bottom: 1px solid #333;
+}
+
+header h1 {
+  margin: 0;
+  color: #a78bfa;
+}
+
+header p {
+  color: #aaa;
+  margin-bottom: 0;
+}
+
+.container {
+  padding: 20px;
+  max-width: 600px;
+  margin: auto;
+}
+
+.card {
+  background: #1b1b23;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #333;
+}
+
+.preview {
+  background: #09090c;
+  border-radius: 12px;
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: #aaa;
+  text-align: center;
+}
+
+.preview video {
+  width: 100%;
+  max-height: 350px;
+}
+
+button, .upload {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  margin-top: 15px;
+  border
